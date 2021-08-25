@@ -9,7 +9,7 @@ function Input() {
         placeholder="Recipient's username"
         aria-label="Recipient's username"
         aria-describedby="basic-addon2"
-        value={this.target.value}
+       // value={this.target.value}
         onChange={(e) => {
           e.preventDefault();
           console.log(e.target.value);
