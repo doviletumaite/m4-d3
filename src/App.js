@@ -1,23 +1,24 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
-import SingleBook from "./components/SingleBook";
-import Input from "./components/Input";
-import books from "../src/data/books.json";
+import books from "./data/books.json";
 import BookList from "./components/BookList";
-import { Row, Container } from "react-bootstrap";
+import SingleBook from "./components/SingleBook";
+import WarningSign from "./components/WarningSign";
+import MyBadge from "./components/MyBadge";
+import { Container } from "react-bootstrap";
 
 function App() {
+  console.log("Singlebook: ", SingleBook);
   return (
     <div className="App">
-      <Input />
       <Container>
-        <Row>
-          {books.map((book) => {
-            return <BookList books={<SingleBook book={book} />} />;
-          })}
-        </Row>
+        <WarningSign />
+        <MyBadge />
+        <SingleBook book={books[0]} />
       </Container>
+
+      <BookList books={books} />
     </div>
   );
 }
