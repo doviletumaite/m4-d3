@@ -1,12 +1,56 @@
 import React from "react";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Form,
+  Row,
+  InputGroup,
+  Button,
+  FormControl,
+} from "react-bootstrap";
+import SingleBook from "./SingleBook";
 
-const BookList = (props) => {
-  return (
-    <Col sm={6} md={4} lg={3} className="mt-3">
-      {props.books}
-    </Col>
-  );
-};
+class BookList extends React.Component {
+  state = {
+    searchBook: "",
+  };
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <InputGroup className="mb-3 d-flex align-items-center">
+              <Form.Label Style="font-weight: bold; margin-right: 5px;">
+                Search:
+              </Form.Label>
+              <FormControl
+                type="text"
+                placeholder=""
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+               value={this.state.searchBook}
+                   onChange={e => {
+                    e.preventDefault();
+                    this.setState({searchBook: e.target.value})
+                //      console.log(e.target.value);
+               }}
+              />
+              <Button variant="outline-secondary" id="button-addon2">
+                Search
+              </Button>
+            </InputGroup>
+          </Col>
+        </Row>
+        <Row>
+          {this.props.books.filter(book => book.title.toLowerCase().includes(this.state.searchBook)).map((book) => (
+            <Col xs={3}>
+              <SingleBook book={book} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    );
+  }
+}
 
 export default BookList;
