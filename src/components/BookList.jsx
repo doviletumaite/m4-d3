@@ -36,7 +36,6 @@ class BookList extends React.Component {
                    onChange={e => {
                     e.preventDefault();
                     this.setState({searchBook: e.target.value})
-                //      console.log(e.target.value);
                }}
               />
               <Button variant="outline-secondary" id="button-addon2">

@@ -5,9 +5,9 @@
    // import BookList from "./BookList";
    
    class SingleBook extends React.Component{
-     // state= {
-     //   selected: false
-     // }
+     state= {
+       selected: false
+     }
     render(){
      return (
        <>
